@@ -1,0 +1,19 @@
+{
+  "name": "responsive-nav",
+  "version": "1.0.0",
+  "description": "A responsive navigation designed by Caleb at Nature's Laboratory.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natureslaboratory/responsive-nav.git"
+  },
+  "author": "Caleb Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natureslaboratory/responsive-nav/issues"
+  },
+  "homepage": "https://github.com/natureslaboratory/responsive-nav#readme"
+}
