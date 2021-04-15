@@ -1,5 +1,5 @@
-import Hamburger from './Hamburger';
-import NavBar from './NavBar';
+import Hamburger from './Hamburger.js';
+import NavBar from './NavBar.js';
 
 export default class Navigation {
     node; // HTMLElement

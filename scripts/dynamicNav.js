@@ -1,6 +1,6 @@
-import DynamicNavigation from './classes/DynamicNavigation';
-import StaticNavigation from './classes/StaticNavigation';
-import FixedNavigation from './classes/FixedNavigation';
+import DynamicNavigation from './classes/DynamicNavigation.js';
+import StaticNavigation from './classes/StaticNavigation.js';
+import FixedNavigation from './classes/FixedNavigation.js';
 
 const navigationBuilder = nav => {
     switch (nav.dataset.type) {

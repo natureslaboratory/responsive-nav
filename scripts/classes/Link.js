@@ -1,4 +1,4 @@
-import Icon from './Icon';
+import Icon from './Icon.js';
 
 class Link {
     node; // HTMLElement
@@ -94,6 +94,8 @@ export class NavBarLink extends Link {
     open() {
         if (this.childLinksNode) {
             this.childLinksNode.classList.add("show");
+            let buttonRect = this.node.getBoundingClientRect();
+            this.childLinksNode.style.top = `${buttonRect.bottom}px`;
             this.icon.spin();
         }
     }

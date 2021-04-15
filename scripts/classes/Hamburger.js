@@ -1,5 +1,5 @@
-import NavMenu from './NavMenu';
-import {HamburgerNavLink} from './Link';
+import NavMenu from './NavMenu.js';
+import {HamburgerNavLink} from './Link.js';
 
 export default class Hamburger extends NavMenu {
     type;

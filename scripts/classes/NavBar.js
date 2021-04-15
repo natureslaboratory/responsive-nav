@@ -1,5 +1,5 @@
-import NavMenu from './NavMenu';
-import {NavBarLink} from './Link';
+import NavMenu from './NavMenu.js';
+import {NavBarLink} from './Link.js';
 
 export default class NavBar extends NavMenu {
 
