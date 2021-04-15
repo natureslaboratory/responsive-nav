@@ -109,6 +109,10 @@ export default class Navigation {
         this.node.classList.add("show");
     }
 
+    hide() {
+        this.node.classList.remove("show");
+    }
+
     // Private Null
     addEventListeners() {
         this.hamburgerButton.addEventListener("click", () => {

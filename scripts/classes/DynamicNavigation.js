@@ -16,9 +16,11 @@ export default class DynamicNavigation extends Navigation {
     // Public Null
     handleResize() {
         // for mobile
+        this.hide();
         if (this.breakpoint) {
             if (document.documentElement.clientWidth <= this.breakpoint) {
                 this.moveAllToHamburger();
+                this.show();
                 return
             }
         }
@@ -34,7 +36,7 @@ export default class DynamicNavigation extends Navigation {
         if (timeout > 900) {
             throw new Error("Infinite Loop");
         }
-        
+        this.show();
     }
 
     // Private Bool

@@ -23,16 +23,11 @@ for (let i = 0; i < navigationItems.length; i++) {
     navigationArray = [...navigationArray, navigation];
 }
 if (navigationArray) {
-    window.onload = () => {
+    window.addEventListener("DOMContentLoaded", () => {
         navigationArray.forEach(nav => {
             nav.handleResize()
         })
-        setTimeout(() => {
-            navigationArray.forEach(nav => {
-                nav.show();
-            })
-        }, 20)
-    };
+    })
 
     window.addEventListener("resize", () => {
         navigationArray.forEach(nav => {
