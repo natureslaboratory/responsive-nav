@@ -1,6 +1,6 @@
 {
   "name": "@natureslaboratory/responsive-nav",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "A responsive navigation designed by Caleb at Nature's Laboratory.",
   "main": "index.js",
   "scripts": {
