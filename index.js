@@ -1,1 +1,978 @@
-(()=>{"use strict";function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function t(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var n=function(){function n(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),t(this,"node",void 0),t(this,"links",[]),t(this,"labelMappings",{}),this.node=e,this.hideAll=this.hideAll.bind(this),this.showAll=this.showAll.bind(this)}var r,o;return r=n,(o=[{key:"hideAll",value:function(){this.links.forEach((function(e){return e.hide()}))}},{key:"showAll",value:function(){this.links.forEach((function(e){return e.show()}))}}])&&e(r.prototype,o),n}();function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var o=function(){function e(t){var n,r;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),r=void 0,(n="node")in this?Object.defineProperty(this,n,{value:r,enumerable:!0,configurable:!0,writable:!0}):this.node=r,this.node=t,this.show=this.show.bind(this),this.hide=this.hide.bind(this)}var t,n;return t=e,(n=[{key:"show",value:function(){this.node.classList.contains("hide")&&this.node.classList.remove("hide")}},{key:"hide",value:function(){this.node.classList.contains("hide")||this.node.classList.add("hide")}},{key:"spin",value:function(){this.node.classList.add("spin")}},{key:"unspin",value:function(){this.node.classList.remove("spin")}}])&&r(t.prototype,n),e}();function i(e){return(i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function a(e){return function(e){if(Array.isArray(e))return c(e)}(e)||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return c(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?c(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function c(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&u(e,t)}function u(e,t){return(u=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function l(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=h(e);if(t){var o=h(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return f(this,n)}}function f(e,t){return!t||"object"!==i(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function h(e){return(h=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function d(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function y(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function p(e,t,n){return t&&y(e.prototype,t),n&&y(e,n),e}function b(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var v=function(){function e(t){d(this,e),b(this,"node",void 0),b(this,"link",void 0),b(this,"icon",void 0),b(this,"childLinksNode",void 0),b(this,"childLinks",[]),this.node=t}return p(e,[{key:"hasChildren",get:function(){return!!this.childLinksNode}},{key:"isHidden",get:function(){return!!this.node.classList.contains("hide")}},{key:"hide",value:function(){this.isHidden||this.node.classList.add("hide")}},{key:"show",value:function(){this.isHidden&&this.node.classList.remove("hide")}}]),e}(),m=function(e){s(n,e);var t=l(n);function n(e){var r;d(this,n),r=t.call(this,e);for(var i=0;i<r.node.children.length;i++){var c=r.node.children[i];if(c.classList.contains("c-navbar__link")||c.classList.contains("c-navbar__button")){r.link=c;var s=c.getElementsByClassName("c-icon");if(!s)throw new Error("No Icon For Dropdown");r.icon=new o(s[0])}else c.classList.contains("c-navbar__sub-menu")&&(r.childLinksNode=c)}if(r.hasChildren)for(var u=0;u<r.childLinksNode.children.length;u++){var l=r.childLinksNode.children[u];r.childLinks=[].concat(a(r.childLinks),[l])}return r}return p(n,[{key:"width",get:function(){var e=this.node.getBoundingClientRect();return e.right-e.left}},{key:"isMenuOpen",get:function(){return!!this.childLinksNode.classList.contains("show")}},{key:"toggle",value:function(){this.isMenuOpen?this.close():this.open()}},{key:"open",value:function(){if(this.childLinksNode){this.childLinksNode.classList.add("show");var e=this.node.getBoundingClientRect();this.childLinksNode.style.top="".concat(e.bottom,"px"),this.icon.spin()}}},{key:"close",value:function(){this.childLinksNode&&(this.childLinksNode.classList.remove("show"),this.icon.unspin())}}]),n}(v),g=function(e){s(n,e);var t=l(n);function n(e){var r;d(this,n),r=t.call(this,e);for(var i=0;i<r.node.children.length;i++){var c=r.node.children[i];if(c.classList.contains("c-hamburger__link")||c.classList.contains("c-hamburger__element-button")){r.link=c;var s=c.getElementsByClassName("c-icon");s&&(r.icon=new o(s[0]))}else c.classList.contains("c-hamburger__sub-menu")&&(r.childLinksNode=c)}if(r.hasChildren)for(var u=0;u<r.childLinksNode.children.length;u++){var l=r.childLinksNode.children[u],f=l.getElementsByClassName("c-hamburger__sub-link");f&&(f[0].tabIndex="-1"),r.childLinks=[].concat(a(r.childLinks),[l])}return r}return p(n,[{key:"isMenuOpen",get:function(){return!!this.childLinksNode.style.maxHeight}},{key:"toggle",value:function(){this.isMenuOpen?this.close():this.open()}},{key:"close",value:function(){this.childLinksNode&&(this.childLinksNode.style.maxHeight=null,this.childLinks.forEach((function(e){var t=e.getElementsByClassName("c-hamburger__sub-link");t&&(t[0].tabIndex="-1")})),this.icon&&this.icon.unspin())}},{key:"open",value:function(){this.childLinksNode&&(this.childLinksNode.style.maxHeight=this.childLinksNode.scrollHeight+"px",this.childLinks.forEach((function(e){var t=e.getElementsByClassName("c-hamburger__sub-link");t&&(t[0].tabIndex="0")})),this.icon&&this.icon.spin())}},{key:"makeTabbable",value:function(){this.link&&(this.link.tabIndex="0")}},{key:"makeUntabbable",value:function(){this.link&&(this.link.tabIndex="-1")}}]),n}(v);function w(e){return(w="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function k(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function O(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function _(e,t){return(_=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function L(e,t){return!t||"object"!==w(t)&&"function"!=typeof t?E(e):t}function E(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function j(e){return(j=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}var S=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_(e,t)}(a,e);var t,n,r,o,i=(r=a,o=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}(),function(){var e,t=j(r);if(o){var n=j(this).constructor;e=Reflect.construct(t,arguments,n)}else e=t.apply(this,arguments);return L(this,e)});function a(e){var t,n,r,o,c;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,a),o=void 0,(r="type")in(n=E(t=i.call(this,e)))?Object.defineProperty(n,r,{value:o,enumerable:!0,configurable:!0,writable:!0}):n.type=o,t.subMenuType=t.node.dataset.expand,t.subMenuType||console.warn("No Expand Type Specified");for(var s=0;s<t.node.children.length;s++){var u=t.node.children[s];if(u.classList.contains("c-hamburger__element")){var l=new g(u,t.subMenuType?t.subMenuType:"accordian");l.makeUntabbable(),t.links=[].concat(function(e){if(Array.isArray(e))return k(e)}(c=t.links)||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(c)||function(e,t){if(e){if("string"==typeof e)return k(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?k(e,t):void 0}}(c)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}(),[l])}}try{t.type=t.node.dataset.type}catch(e){console.error("No Hamburger Type Specified")}if(t.type&&"slideover"==t.type){var f=document.createElement("li");f.classList.add("c-hamburger__close-wrapper"),f.innerHTML='<svg width="12.32781mm" height="12.327812mm" viewBox="0 0 12.32781 12.327812" version="1.1" class="c-hamburger__close-button">\n                    <defs id="defs2" />\n                    <g inkscape:label="Layer 1" id="layer1" transform="translate(-8.837041,-271.65379)" class="c-cross__g">\n                        <rect class="c-cross__rect" width="16.394718" height="1.0394346" x="-194.03687" y="206.53433" transform="rotate(-45)" />\n                        <rect transform="rotate(-135)" y="-186.35922" x="-215.2514" height="1.0394346" width="16.394718" class="c-cross__rect" />\n                    </g>\n                </svg>',t.node.prepend(f)}return t.addEventListeners(),t}return t=a,(n=[{key:"isHidden",get:function(){return!this.node.classList.contains("show")}},{key:"isHamburgerFull",get:function(){return this.links.forEach((function(e){if(e.isHidden)return!1})),!0}},{key:"show",value:function(){switch(this.links.forEach((function(e){e.makeTabbable()})),this.type){case"dropdown":this.node.classList.add("show");break;case"slideover":this.node.classList.add("show"),document.getElementsByTagName("body")[0].classList.add("no-scroll");break;case"slidewith":break;case"fullpage":this.node.classList.add("show");break;default:throw new Error("Invalid Hamburger Type")}}},{key:"hide",value:function(){var e=this;switch(this.links.forEach((function(e){e.makeUntabbable()})),this.type){case"dropdown":this.node.classList.remove("show");break;case"slideover":this.node.classList.remove("show"),document.getElementsByTagName("body")[0].classList.remove("no-scroll");break;case"slidewith":break;case"fullpage":this.node.classList.remove("show");break;default:throw new Error("Invalid Hamburger Type")}setTimeout((function(){e.closeAllMenus()}),150)}},{key:"showOne",value:function(){for(var e=this.links.length-1;e>=0;e--){var t=this.links[e];if(t.isHidden){t.show();break}}}},{key:"handleLinks",value:function(e){e.isMenuOpen?e.close():(this.closeAllMenus(),e.open())}},{key:"closeAllMenus",value:function(){this.links.forEach((function(e){e.close()}))}},{key:"addEventListeners",value:function(){var e=this;this.links.forEach((function(t){t.hasChildren&&t.node.addEventListener("click",(function(){e.handleLinks(t)}))})),"slideover"==this.type&&document.getElementsByClassName("c-hamburger__close-button")[0].addEventListener("click",(function(){e.hide()}))}}])&&O(t.prototype,n),a}(n);function A(e){return(A="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function P(e){return function(e){if(Array.isArray(e))return N(e)}(e)||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return N(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?N(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function N(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function B(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function T(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function R(e,t){return(R=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function C(e,t){return!t||"object"!==A(t)&&"function"!=typeof t?I(e):t}function I(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function x(e){return(x=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}var M=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&R(e,t)}(a,e);var t,n,r,o,i=(r=a,o=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}(),function(){var e,t=x(r);if(o){var n=x(this).constructor;e=Reflect.construct(t,arguments,n)}else e=t.apply(this,arguments);return C(this,e)});function a(e){var t,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};B(this,a),t=i.call(this,e,n);for(var r=0;r<t.node.children.length;r++){var o=t.node.children[r],c=new m(o,t.labelMappings,t.closeAllMenus);t.links=[].concat(P(t.links),[c])}return t.hideOne=t.hideOne.bind(I(t)),t.closeAllMenus=t.closeAllMenus.bind(I(t)),t.addEventListeners(),t}return t=a,(n=[{key:"totalWidth",get:function(){var e=0;return this.links.forEach((function(t){e+=t.width})),e}},{key:"hideOne",value:function(){for(var e=this.links.length-1;e>=0;e--){var t=this.links[e];if(!t.isHidden){t.hide();break}}}},{key:"handleLinks",value:function(e){e.childLinksNode.classList.contains("show")?e.close():(this.closeAllMenus(),e.open())}},{key:"addEventListeners",value:function(){var e=this;this.links.forEach((function(t){t.hasChildren&&t.node.addEventListener("click",(function(){e.handleLinks(t)}))}))}},{key:"closeAllMenus",value:function(){this.links.forEach((function(e){e.close()}))}}])&&T(t.prototype,n),a}(n);function H(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function W(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function U(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var z=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),U(this,"node",void 0),U(this,"navBar",void 0),U(this,"hamburger",void 0),U(this,"hamburgerButton",void 0),U(this,"hamburgerWrapper",void 0),this.node=t,this.getNavItems(),this.addEventListeners()}var t,n;return t=e,(n=[{key:"getNavItems",value:function(){var e=this.node.getElementsByClassName("c-navbar");if(!e)throw new Error("No c-navbar present.");this.navBar=new M(e[0]);var t=this.node.getElementsByClassName("c-hamburger");if(0==t.length)throw new Error("No c-hamburger present.");this.hamburgerWrapper=t[0];var n=this.hamburgerWrapper.getElementsByClassName("c-hamburger__menu");if(0==n.length)throw new Error("No c-hamburger__menu present.");this.hamburger=new S(n[0]);var r=this.node.getElementsByClassName("c-hamburger__button");if(!r)throw new Error("No c-hamburger__button present.");this.hamburgerButton=r[0]}},{key:"moveAllToHamburger",value:function(){this.hamburgerWrapper.classList.remove("hide"),this.hamburger.showAll(),this.navBar.hideAll()}},{key:"moveAllToNav",value:function(){this.hamburgerWrapper.classList.add("hide"),this.hamburger.hideAll(),this.navBar.showAll()}},{key:"moveOneToHamburger",value:function(){this.hamburgerWrapper.classList.remove("hide"),this.navBar.hideOne(),this.hamburger.showOne()}},{key:"handleHamburgerButton",value:function(){this.hamburger.isHidden?this.hamburger.show():this.hamburger.hide()}},{key:"getParents",value:function(e){return"HTML"==e.tagName?[e]:[e.parentElement].concat(function(e){if(Array.isArray(e))return H(e)}(t=this.getParents(e.parentElement))||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(t)||function(e,t){if(e){if("string"==typeof e)return H(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?H(e,t):void 0}}(t)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}());var t}},{key:"hasParent",value:function(e,t){for(var n=this.getParents(e),r=0;r<n.length;r++)if(n[r]==t)return!0;return!1}},{key:"handlePageClick",value:function(e){this.hasParent(e.target,this.hamburgerWrapper)||this.hamburger.hide(),this.hasParent(e.target,this.navBar.node)||this.navBar.closeAllMenus()}},{key:"show",value:function(){this.node.classList.add("show")}},{key:"hide",value:function(){this.node.classList.remove("show")}},{key:"addEventListeners",value:function(){var e=this;this.hamburgerButton.addEventListener("click",(function(){e.handleHamburgerButton()})),window.addEventListener("click",(function(t){e.handlePageClick(t)}))}}])&&W(t.prototype,n),e}();function $(e){return($="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function D(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function F(e,t){return(F=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function q(e,t){return!t||"object"!==$(t)&&"function"!=typeof t?G(e):t}function G(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function J(e){return(J=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}var K=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&F(e,t)}(a,e);var t,n,r,o,i=(r=a,o=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}(),function(){var e,t=J(r);if(o){var n=J(this).constructor;e=Reflect.construct(t,arguments,n)}else e=t.apply(this,arguments);return q(this,e)});function a(e){var t,n,r,o;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,a),o=void 0,(r="breakpoint")in(n=G(t=i.call(this,e)))?Object.defineProperty(n,r,{value:o,enumerable:!0,configurable:!0,writable:!0}):n[r]=o;try{t.breakpoint=parseInt(t.node.dataset.breakpoint)}catch(e){console.error("Invalid Breakpoint")}return t}return t=a,(n=[{key:"handleResize",value:function(){if(this.hide(),this.breakpoint&&document.documentElement.clientWidth<=this.breakpoint)return this.moveAllToHamburger(),void this.show();this.moveAllToNav();for(var e=0;this.isNavWrapped()&&e<1e3;)this.moveOneToHamburger(),e++;if(e>900)throw new Error("Infinite Loop");this.show()}},{key:"isNavWrapped",value:function(){var e=this.navBar.node.getBoundingClientRect(),t=e.right-e.left;return this.navBar.totalWidth>t-50}}])&&D(t.prototype,n),a}(z);function Q(e){return(Q="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function V(e,t){return(V=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function X(e,t){return!t||"object"!==Q(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function Y(e){return(Y=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}var Z=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&V(e,t)}(o,e);var t,n,r=(t=o,n=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}(),function(){var e,r=Y(t);if(n){var o=Y(this).constructor;e=Reflect.construct(r,arguments,o)}else e=r.apply(this,arguments);return X(this,e)});function o(e){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,o),r.call(this,e)}return o}(z);function ee(e){return(ee="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function te(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function ne(e,t){return(ne=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function re(e,t){return!t||"object"!==ee(t)&&"function"!=typeof t?oe(e):t}function oe(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function ie(e){return(ie=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}var ae,ce=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&ne(e,t)}(a,e);var t,n,r,o,i=(r=a,o=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}(),function(){var e,t=ie(r);if(o){var n=ie(this).constructor;e=Reflect.construct(t,arguments,n)}else e=t.apply(this,arguments);return re(this,e)});function a(e){var t,n,r,o;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,a),o=void 0,(r="breakpoint")in(n=oe(t=i.call(this,e)))?Object.defineProperty(n,r,{value:o,enumerable:!0,configurable:!0,writable:!0}):n[r]=o;try{t.breakpoint=t.node.dataset.breakpoint}catch(e){console.error("Invalid Breakpoint")}return t}return t=a,(n=[{key:"handleResize",value:function(){document.documentElement.clientWidth<=this.breakpoint?this.moveAllToHamburger():this.moveAllToNav()}}])&&te(t.prototype,n),a}(z);function se(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}for(var ue=function(e){switch(e.dataset.type){case"dynamic":return new K(e);case"static":return new Z(e);case"fixed":return new ce(e);default:throw new Error("No Navigation Type Specified")}},le=document.getElementsByClassName("c-navigation"),fe=[],he=0;he<le.length;he++){var de=ue(le[he]);fe=[].concat(function(e){if(Array.isArray(e))return se(e)}(ae=fe)||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(ae)||function(e,t){if(e){if("string"==typeof e)return se(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?se(e,t):void 0}}(ae)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}(),[de])}fe&&(window.addEventListener("DOMContentLoaded",(function(){fe.forEach((function(e){e.handleResize()}))})),window.addEventListener("resize",(function(){fe.forEach((function(e){e.handleResize()}))})))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./scripts/classes/DynamicNavigation.ts":
+/*!**********************************************!*\
+  !*** ./scripts/classes/DynamicNavigation.ts ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var Navigation_1 = __webpack_require__(/*! ./Navigation */ "./scripts/classes/Navigation.ts");
+var DynamicNavigation = /** @class */ (function (_super) {
+    __extends(DynamicNavigation, _super);
+    function DynamicNavigation(nav) {
+        var _this = _super.call(this, nav) || this;
+        try {
+            _this.breakpoint = parseInt(_this.node.dataset.breakpoint);
+        }
+        catch (error) {
+            console.error("Invalid Breakpoint");
+        }
+        return _this;
+    }
+    // Public Null
+    DynamicNavigation.prototype.handleResize = function () {
+        // for mobile
+        this.hide();
+        if (this.breakpoint) {
+            if (document.documentElement.clientWidth <= this.breakpoint) {
+                this.moveAllToHamburger();
+                this.show();
+                return;
+            }
+        }
+        // for desktop
+        this.moveAllToNav();
+        var timeout = 0;
+        while (this.isNavWrapped() && timeout < 1000) {
+            this.moveOneToHamburger();
+            timeout++;
+        }
+        if (timeout > 900) {
+            throw new Error("Infinite Loop");
+        }
+        this.show();
+    };
+    // Private Bool
+    DynamicNavigation.prototype.isNavWrapped = function () {
+        var navigationRect = this.navBar.node.getBoundingClientRect();
+        var navWidth = navigationRect.right - navigationRect.left;
+        var linksWidth = this.navBar.totalWidth;
+        // 50 is icon width, refactor later to use actual icon width
+        if (linksWidth > navWidth - 50) {
+            return true;
+        }
+        return false;
+    };
+    return DynamicNavigation;
+}(Navigation_1.default));
+exports.default = DynamicNavigation;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/FixedNavigation.ts":
+/*!********************************************!*\
+  !*** ./scripts/classes/FixedNavigation.ts ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var Navigation_1 = __webpack_require__(/*! ./Navigation */ "./scripts/classes/Navigation.ts");
+var FixedNavigation = /** @class */ (function (_super) {
+    __extends(FixedNavigation, _super);
+    function FixedNavigation(nav) {
+        var _this = _super.call(this, nav) || this;
+        try {
+            _this.breakpoint = _this.node.dataset.breakpoint;
+        }
+        catch (error) {
+            console.error("Invalid Breakpoint");
+        }
+        return _this;
+    }
+    // Public Null
+    FixedNavigation.prototype.handleResize = function () {
+        // for mobile
+        if (document.documentElement.clientWidth <= this.breakpoint) {
+            this.moveAllToHamburger();
+        }
+        // for desktop
+        else {
+            this.moveAllToNav();
+        }
+    };
+    return FixedNavigation;
+}(Navigation_1.default));
+exports.default = FixedNavigation;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/Hamburger.ts":
+/*!**************************************!*\
+  !*** ./scripts/classes/Hamburger.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var NavMenu_1 = __webpack_require__(/*! ./NavMenu */ "./scripts/classes/NavMenu.ts");
+var Link_1 = __webpack_require__(/*! ./Link */ "./scripts/classes/Link.ts");
+var Hamburger = /** @class */ (function (_super) {
+    __extends(Hamburger, _super);
+    function Hamburger(menu) {
+        var _this = _super.call(this, menu) || this;
+        _this.links = [];
+        _this.subMenuType = _this.node.dataset.expand;
+        if (!_this.subMenuType) {
+            console.warn("No Expand Type Specified");
+        }
+        var children = _this.node.children;
+        for (var i = 0; i < children.length; i++) {
+            var link = children[i];
+            if (link.classList.contains("c-hamburger__element")) {
+                var newLink = new Link_1.HamburgerNavLink(link, _this.subMenuType ? _this.subMenuType : "accordian");
+                newLink.makeUntabbable();
+                _this.links = __spreadArray(__spreadArray([], _this.links), [newLink]);
+            }
+        }
+        try {
+            _this.type = _this.node.dataset.type;
+        }
+        catch (error) {
+            console.error("No Hamburger Type Specified");
+        }
+        if (_this.type && _this.type == "slideover") {
+            var closeDiv = document.createElement("li");
+            closeDiv.classList.add("c-hamburger__close-wrapper");
+            closeDiv.innerHTML =
+                "<svg width=\"12.32781mm\" height=\"12.327812mm\" viewBox=\"0 0 12.32781 12.327812\" version=\"1.1\" class=\"c-hamburger__close-button\">\n                    <defs id=\"defs2\" />\n                    <g inkscape:label=\"Layer 1\" id=\"layer1\" transform=\"translate(-8.837041,-271.65379)\" class=\"c-cross__g\">\n                        <rect class=\"c-cross__rect\" width=\"16.394718\" height=\"1.0394346\" x=\"-194.03687\" y=\"206.53433\" transform=\"rotate(-45)\" />\n                        <rect transform=\"rotate(-135)\" y=\"-186.35922\" x=\"-215.2514\" height=\"1.0394346\" width=\"16.394718\" class=\"c-cross__rect\" />\n                    </g>\n                </svg>";
+            _this.node.prepend(closeDiv);
+        }
+        _this.addEventListeners();
+        return _this;
+    }
+    Object.defineProperty(Hamburger.prototype, "isHidden", {
+        // Public Bool
+        get: function () {
+            if (this.node.classList.contains("show")) {
+                return false;
+            }
+            return true;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Hamburger.prototype, "isHamburgerFull", {
+        get: function () {
+            this.links.forEach(function (link) {
+                if (link.isHidden) {
+                    return false;
+                }
+            });
+            return true;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    // Public Null
+    Hamburger.prototype.show = function () {
+        this.links.forEach(function (link) {
+            link.makeTabbable();
+        });
+        switch (this.type) {
+            case "dropdown":
+                this.node.classList.add("show");
+                break;
+            case "slideover":
+                this.node.classList.add("show");
+                var body = document.getElementsByTagName("body")[0];
+                body.classList.add("no-scroll");
+                break;
+            case "slidewith":
+                break;
+            case "fullpage":
+                this.node.classList.add("show");
+                break;
+            default:
+                throw new Error("Invalid Hamburger Type");
+        }
+    };
+    // Public Null
+    Hamburger.prototype.hide = function () {
+        var _this = this;
+        this.links.forEach(function (link) {
+            link.makeUntabbable();
+        });
+        switch (this.type) {
+            case "dropdown":
+                this.node.classList.remove("show");
+                break;
+            case "slideover":
+                this.node.classList.remove("show");
+                var body = document.getElementsByTagName("body")[0];
+                body.classList.remove("no-scroll");
+                break;
+            case "slidewith":
+                break;
+            case "fullpage":
+                this.node.classList.remove("show");
+                break;
+            default:
+                throw new Error("Invalid Hamburger Type");
+        }
+        setTimeout(function () {
+            _this.closeAllMenus();
+        }, 150);
+    };
+    // Public Null
+    Hamburger.prototype.showOne = function () {
+        for (var i = this.links.length - 1; i >= 0; i--) {
+            var link = this.links[i];
+            if (link.isHidden) {
+                link.showLink();
+                break;
+            }
+        }
+    };
+    Hamburger.prototype.handleLinks = function (link) {
+        if (!link.isMenuOpen) {
+            this.closeAllMenus();
+            link.open();
+        }
+        else {
+            link.close();
+        }
+    };
+    Hamburger.prototype.closeAllMenus = function () {
+        this.links.forEach(function (link) {
+            link.close();
+        });
+    };
+    Hamburger.prototype.addEventListeners = function () {
+        var _this = this;
+        this.links.forEach(function (link) {
+            if (link.hasChildren) {
+                link.node.addEventListener("click", function () {
+                    _this.handleLinks(link);
+                });
+            }
+        });
+        if (this.type == "slideover") {
+            var closeButton = document.getElementsByClassName("c-hamburger__close-button")[0];
+            closeButton.addEventListener("click", function () {
+                _this.hide();
+            });
+        }
+    };
+    return Hamburger;
+}(NavMenu_1.default));
+exports.default = Hamburger;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/Icon.ts":
+/*!*********************************!*\
+  !*** ./scripts/classes/Icon.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var Icon = /** @class */ (function () {
+    function Icon(icon) {
+        this.node = icon;
+        this.show = this.show.bind(this);
+        this.hide = this.hide.bind(this);
+    }
+    // Public Null
+    Icon.prototype.show = function () {
+        if (this.node.classList.contains("hide")) {
+            this.node.classList.remove("hide");
+        }
+    };
+    // Public Null
+    Icon.prototype.hide = function () {
+        if (!this.node.classList.contains("hide")) {
+            this.node.classList.add("hide");
+        }
+    };
+    Icon.prototype.spin = function () {
+        this.node.classList.add("spin");
+    };
+    Icon.prototype.unspin = function () {
+        this.node.classList.remove("spin");
+    };
+    return Icon;
+}());
+exports.default = Icon;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/Link.ts":
+/*!*********************************!*\
+  !*** ./scripts/classes/Link.ts ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.HamburgerNavLink = exports.NavBarLink = exports.Link = void 0;
+var Icon_1 = __webpack_require__(/*! ./Icon */ "./scripts/classes/Icon.ts");
+var Link = /** @class */ (function () {
+    function Link(link) {
+        this.childLinks = [];
+        this.node = link;
+    }
+    Object.defineProperty(Link.prototype, "hasChildren", {
+        get: function () {
+            if (this.childLinksNode) {
+                return true;
+            }
+            return false;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Link.prototype, "isHidden", {
+        get: function () {
+            if (this.node.classList.contains("hide")) {
+                return true;
+            }
+            return false;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Link.prototype.hideLink = function () {
+        if (!this.isHidden) {
+            this.node.classList.add("hide");
+        }
+    };
+    Link.prototype.showLink = function () {
+        if (this.isHidden) {
+            this.node.classList.remove("hide");
+        }
+    };
+    Link.prototype.makeTabbable = function () {
+        if (this.link) {
+            this.link.tabIndex = 0;
+        }
+    };
+    Link.prototype.makeUntabbable = function () {
+        if (this.link) {
+            this.link.tabIndex = -1;
+        }
+    };
+    return Link;
+}());
+exports.Link = Link;
+var NavBarLink = /** @class */ (function (_super) {
+    __extends(NavBarLink, _super);
+    function NavBarLink(link) {
+        var _this = _super.call(this, link) || this;
+        var children = _this.node.children;
+        for (var i = 0; i < children.length; i++) {
+            var child = children[i];
+            if (child.classList.contains("c-navbar__link") || child.classList.contains("c-navbar__button")) {
+                _this.link = child;
+                var linkChildren = child.getElementsByClassName("c-icon");
+                if (linkChildren) {
+                    _this.icon = new Icon_1.default(linkChildren[0]);
+                }
+                else {
+                    throw new Error("No Icon For Dropdown");
+                }
+            }
+            else if (child.classList.contains("c-navbar__sub-menu")) {
+                _this.childLinksNode = child;
+            }
+        }
+        if (_this.hasChildren) {
+            var links = _this.childLinksNode.children;
+            for (var i = 0; i < links.length; i++) {
+                var link_1 = links[i];
+                _this.childLinks = __spreadArray(__spreadArray([], _this.childLinks), [link_1]);
+            }
+        }
+        return _this;
+    }
+    Object.defineProperty(NavBarLink.prototype, "width", {
+        // Public Int
+        get: function () {
+            var linkRect = this.node.getBoundingClientRect();
+            return linkRect.right - linkRect.left;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(NavBarLink.prototype, "isMenuOpen", {
+        get: function () {
+            if (this.childLinksNode.classList.contains("show")) {
+                return true;
+            }
+            return false;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    NavBarLink.prototype.toggle = function () {
+        if (this.isMenuOpen) {
+            this.closeMenu();
+        }
+        else {
+            this.openMenu();
+        }
+    };
+    NavBarLink.prototype.openMenu = function () {
+        if (this.childLinksNode) {
+            this.childLinksNode.classList.add("show");
+            var buttonRect = this.node.getBoundingClientRect();
+            this.childLinksNode.style.top = buttonRect.bottom + "px";
+            this.icon.spin();
+        }
+    };
+    NavBarLink.prototype.closeMenu = function () {
+        if (this.childLinksNode) {
+            this.childLinksNode.classList.remove("show");
+            this.icon.unspin();
+        }
+    };
+    return NavBarLink;
+}(Link));
+exports.NavBarLink = NavBarLink;
+var HamburgerNavLink = /** @class */ (function (_super) {
+    __extends(HamburgerNavLink, _super);
+    function HamburgerNavLink(link, expandType) {
+        var _this = _super.call(this, link) || this;
+        _this.expandType = expandType;
+        var children = _this.node.children;
+        for (var i = 0; i < children.length; i++) {
+            var child = children[i];
+            if (child.classList.contains("c-hamburger__link") || child.classList.contains("c-hamburger__element-button")) {
+                _this.link = child;
+                var icons = child.getElementsByClassName("c-icon");
+                if (icons) {
+                    _this.icon = new Icon_1.default(icons[0]);
+                }
+            }
+            else if (child.classList.contains("c-hamburger__sub-menu")) {
+                _this.childLinksNode = child;
+            }
+        }
+        if (_this.hasChildren) {
+            var linksArray = _this.childLinksNode.children;
+            for (var i = 0; i < linksArray.length; i++) {
+                var element = linksArray[i];
+                var links = element.getElementsByClassName("c-hamburger__sub-link");
+                if (links) {
+                    links[0].tabIndex = -1;
+                }
+                _this.childLinks = __spreadArray(__spreadArray([], _this.childLinks), [element]);
+            }
+        }
+        return _this;
+    }
+    Object.defineProperty(HamburgerNavLink.prototype, "isMenuOpen", {
+        get: function () {
+            if (this.childLinksNode.style.maxHeight) {
+                return true;
+            }
+            return false;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    HamburgerNavLink.prototype.toggle = function () {
+        if (this.isMenuOpen) {
+            this.close();
+        }
+        else {
+            this.open();
+        }
+    };
+    HamburgerNavLink.prototype.close = function () {
+        if (this.childLinksNode) {
+            this.childLinksNode.style.maxHeight = null;
+            this.childLinks.forEach(function (element) {
+                var links = element.getElementsByClassName("c-hamburger__sub-link");
+                if (links) {
+                    links[0].tabIndex = -1;
+                }
+            });
+            if (this.icon) {
+                this.icon.unspin();
+            }
+        }
+    };
+    HamburgerNavLink.prototype.open = function () {
+        if (this.childLinksNode) {
+            this.childLinksNode.style.maxHeight = this.childLinksNode.scrollHeight + "px";
+            this.childLinks.forEach(function (element) {
+                var links = element.getElementsByClassName("c-hamburger__sub-link");
+                if (links) {
+                    links[0].tabIndex = 0;
+                }
+            });
+            if (this.icon) {
+                this.icon.spin();
+            }
+        }
+    };
+    return HamburgerNavLink;
+}(Link));
+exports.HamburgerNavLink = HamburgerNavLink;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/NavBar.ts":
+/*!***********************************!*\
+  !*** ./scripts/classes/NavBar.ts ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var NavMenu_1 = __webpack_require__(/*! ./NavMenu */ "./scripts/classes/NavMenu.ts");
+var Link_1 = __webpack_require__(/*! ./Link */ "./scripts/classes/Link.ts");
+var NavBar = /** @class */ (function (_super) {
+    __extends(NavBar, _super);
+    function NavBar(menu) {
+        var _this = _super.call(this, menu) || this;
+        _this.links = [];
+        var children = _this.node.children;
+        for (var i = 0; i < children.length; i++) {
+            var link = children[i];
+            var newLink = new Link_1.NavBarLink(link);
+            _this.links = __spreadArray(__spreadArray([], _this.links), [newLink]);
+        }
+        _this.hideOne = _this.hideOne.bind(_this);
+        _this.closeAllMenus = _this.closeAllMenus.bind(_this);
+        _this.addEventListeners();
+        return _this;
+    }
+    Object.defineProperty(NavBar.prototype, "totalWidth", {
+        // Public Int
+        get: function () {
+            var width = 0;
+            this.links.forEach(function (link) {
+                width += link.width;
+            });
+            return width;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    // Public Null
+    NavBar.prototype.hideOne = function () {
+        for (var i = this.links.length - 1; i >= 0; i--) {
+            var link = this.links[i];
+            if (!link.isHidden) {
+                link.hideLink();
+                break;
+            }
+        }
+    };
+    NavBar.prototype.handleLinks = function (link) {
+        if (link.childLinksNode.classList.contains("show")) {
+            link.closeMenu();
+        }
+        else {
+            this.closeAllMenus();
+            link.openMenu();
+        }
+    };
+    NavBar.prototype.addEventListeners = function () {
+        var _this = this;
+        this.links.forEach(function (link) {
+            if (link.hasChildren) {
+                link.node.addEventListener("click", function () {
+                    _this.handleLinks(link);
+                });
+            }
+        });
+    };
+    NavBar.prototype.closeAllMenus = function () {
+        this.links.forEach(function (link) {
+            link.closeMenu();
+        });
+    };
+    return NavBar;
+}(NavMenu_1.default));
+exports.default = NavBar;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/NavMenu.ts":
+/*!************************************!*\
+  !*** ./scripts/classes/NavMenu.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var NavMenu = /** @class */ (function () {
+    function NavMenu(menu) {
+        this.links = [];
+        this.node = menu;
+        this.hideAll = this.hideAll.bind(this);
+        this.showAll = this.showAll.bind(this);
+    }
+    // Public Null
+    NavMenu.prototype.hideAll = function () {
+        this.links.forEach(function (link) { return link.hideLink(); });
+    };
+    // Public Null
+    NavMenu.prototype.showAll = function () {
+        this.links.forEach(function (link) { return link.showLink(); });
+    };
+    return NavMenu;
+}());
+exports.default = NavMenu;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/Navigation.ts":
+/*!***************************************!*\
+  !*** ./scripts/classes/Navigation.ts ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var Hamburger_1 = __webpack_require__(/*! ./Hamburger */ "./scripts/classes/Hamburger.ts");
+var NavBar_1 = __webpack_require__(/*! ./NavBar */ "./scripts/classes/NavBar.ts");
+var Navigation = /** @class */ (function () {
+    function Navigation(nav) {
+        this.node = nav;
+        this.getNavItems();
+        this.addEventListeners();
+    }
+    // Private Null
+    Navigation.prototype.getNavItems = function () {
+        var navBars = this.node.getElementsByClassName("c-navbar");
+        if (!navBars) {
+            throw new Error("No c-navbar present.");
+        }
+        this.navBar = new NavBar_1.default(navBars[0]);
+        var hamburgers = this.node.getElementsByClassName("c-hamburger");
+        if (!hamburgers) {
+            throw new Error("No c-hamburger present.");
+        }
+        this.hamburgerWrapper = hamburgers[0];
+        var hamburgerMenus = this.hamburgerWrapper.getElementsByClassName("c-hamburger__menu");
+        if (!hamburgerMenus) {
+            throw new Error("No c-hamburger__menu present.");
+        }
+        this.hamburger = new Hamburger_1.default(hamburgerMenus[0]);
+        var hamburgerButtons = this.node.getElementsByClassName("c-hamburger__button");
+        if (!hamburgerButtons) {
+            throw new Error("No c-hamburger__button present.");
+        }
+        this.hamburgerButton = hamburgerButtons[0];
+    };
+    // Private Null
+    Navigation.prototype.moveAllToHamburger = function () {
+        this.hamburgerWrapper.classList.remove("hide");
+        this.hamburger.showAll();
+        this.navBar.hideAll();
+    };
+    // Private Null
+    Navigation.prototype.moveAllToNav = function () {
+        this.hamburgerWrapper.classList.add("hide");
+        this.hamburger.hideAll();
+        this.navBar.showAll();
+    };
+    // Private Null
+    Navigation.prototype.moveOneToHamburger = function () {
+        this.hamburgerWrapper.classList.remove("hide");
+        this.navBar.hideOne();
+        this.hamburger.showOne();
+    };
+    // Private Null
+    Navigation.prototype.handleHamburgerButton = function () {
+        // Hamburger hamburger
+        if (this.hamburger.isHidden) {
+            this.hamburger.show();
+        }
+        else {
+            this.hamburger.hide();
+        }
+    };
+    Navigation.prototype.getParents = function (elem) {
+        if (elem.tagName == "HTML") {
+            return [elem];
+        }
+        return __spreadArray([elem.parentElement], this.getParents(elem.parentElement));
+    };
+    Navigation.prototype.hasParent = function (elem, parentElement) {
+        var parents = this.getParents(elem);
+        for (var i = 0; i < parents.length; i++) {
+            var parent_1 = parents[i];
+            if (parent_1 == parentElement) {
+                return true;
+            }
+        }
+        return false;
+    };
+    // Private Null
+    Navigation.prototype.handlePageClick = function (e) {
+        if (!this.hasParent(e.target, this.hamburgerWrapper)) {
+            this.hamburger.hide();
+        }
+        if (!this.hasParent(e.target, this.navBar.node)) {
+            this.navBar.closeAllMenus();
+        }
+    };
+    // Private Null
+    Navigation.prototype.show = function () {
+        this.node.classList.add("show");
+    };
+    Navigation.prototype.hide = function () {
+        this.node.classList.remove("show");
+    };
+    // Private Null
+    Navigation.prototype.addEventListeners = function () {
+        var _this = this;
+        this.hamburgerButton.addEventListener("click", function () {
+            _this.handleHamburgerButton();
+        });
+        window.addEventListener("click", function (e) {
+            _this.handlePageClick(e);
+        });
+    };
+    Navigation.prototype.handleResize = function () {
+        return;
+    };
+    return Navigation;
+}());
+exports.default = Navigation;
+
+
+/***/ }),
+
+/***/ "./scripts/classes/StaticNavigation.ts":
+/*!*********************************************!*\
+  !*** ./scripts/classes/StaticNavigation.ts ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var Navigation_1 = __webpack_require__(/*! ./Navigation */ "./scripts/classes/Navigation.ts");
+var StaticNavigation = /** @class */ (function (_super) {
+    __extends(StaticNavigation, _super);
+    function StaticNavigation(nav) {
+        return _super.call(this, nav) || this;
+    }
+    return StaticNavigation;
+}(Navigation_1.default));
+exports.default = StaticNavigation;
+
+
+/***/ }),
+
+/***/ "./scripts/dynamicNav.ts":
+/*!*******************************!*\
+  !*** ./scripts/dynamicNav.ts ***!
+  \*******************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var DynamicNavigation_1 = __webpack_require__(/*! ./classes/DynamicNavigation */ "./scripts/classes/DynamicNavigation.ts");
+var StaticNavigation_1 = __webpack_require__(/*! ./classes/StaticNavigation */ "./scripts/classes/StaticNavigation.ts");
+var FixedNavigation_1 = __webpack_require__(/*! ./classes/FixedNavigation */ "./scripts/classes/FixedNavigation.ts");
+var navigationBuilder = function (nav) {
+    switch (nav.dataset.type) {
+        case "dynamic":
+            return new DynamicNavigation_1.default(nav);
+        case "static":
+            return new StaticNavigation_1.default(nav);
+        case "fixed":
+            return new FixedNavigation_1.default(nav);
+        default:
+            throw new Error("No Navigation Type Specified");
+    }
+};
+var navigationItems = document.getElementsByClassName("c-navigation");
+var navigationArray = [];
+for (var i = 0; i < navigationItems.length; i++) {
+    var nav = navigationItems[i];
+    var navigation = navigationBuilder(nav);
+    navigationArray = __spreadArray(__spreadArray([], navigationArray), [navigation]);
+}
+if (navigationArray) {
+    window.addEventListener("DOMContentLoaded", function () {
+        navigationArray.forEach(function (nav) {
+            nav.handleResize();
+        });
+    });
+    window.addEventListener("resize", function () {
+        navigationArray.forEach(function (nav) {
+            nav.handleResize();
+        });
+    });
+}
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+var exports = __webpack_exports__;
+/*!**************************!*\
+  !*** ./scripts/index.ts ***!
+  \**************************/
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__webpack_require__(/*! ./dynamicNav */ "./scripts/dynamicNav.ts");
+
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=index.js.map

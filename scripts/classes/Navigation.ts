@@ -1,15 +1,14 @@
-import Hamburger from './Hamburger.js';
-import NavBar from './NavBar.js';
+import Hamburger from './Hamburger';
+import NavBar from './NavBar';
 
 export default class Navigation {
-    node; // HTMLElement
-    navBar; // TopNav
-    hamburger; // Hamburger
-    hamburgerButton; // HTMLElement
-    hamburgerWrapper; // HTMLElement
+    node : HTMLElement; // HTMLElement
+    navBar : NavBar; // TopNav
+    hamburger : Hamburger; // Hamburger
+    hamburgerButton : HTMLElement; // HTMLElement
+    hamburgerWrapper : HTMLElement; // HTMLElement
 
-    constructor(nav) {
-        // HTMLElement nav
+    constructor(nav : HTMLElement) {
         this.node = nav;
         this.getNavItems();
         this.addEventListeners();
@@ -17,25 +16,25 @@ export default class Navigation {
 
     // Private Null
     getNavItems() {
-        let navBars = this.node.getElementsByClassName("c-navbar");
+        let navBars = this.node.getElementsByClassName("c-navbar") as HTMLCollectionOf<HTMLElement>;
         if (!navBars) {
             throw new Error("No c-navbar present.");
         }
         this.navBar = new NavBar(navBars[0]);
 
-        let hamburgers = this.node.getElementsByClassName("c-hamburger");
-        if (hamburgers.length == 0) {
+        let hamburgers = this.node.getElementsByClassName("c-hamburger") as HTMLCollectionOf<HTMLElement>;
+        if (!hamburgers) {
             throw new Error("No c-hamburger present.");
         }
         this.hamburgerWrapper = hamburgers[0];
 
-        let hamburgerMenus = this.hamburgerWrapper.getElementsByClassName("c-hamburger__menu");
-        if (hamburgerMenus.length == 0) {
+        let hamburgerMenus = this.hamburgerWrapper.getElementsByClassName("c-hamburger__menu") as HTMLCollectionOf<HTMLElement>;
+        if (!hamburgerMenus) {
             throw new Error("No c-hamburger__menu present.");
         }
         this.hamburger = new Hamburger(hamburgerMenus[0]);
         
-        let hamburgerButtons = this.node.getElementsByClassName("c-hamburger__button");
+        let hamburgerButtons = this.node.getElementsByClassName("c-hamburger__button") as HTMLCollectionOf<HTMLElement>;
         if (!hamburgerButtons) {
             throw new Error("No c-hamburger__button present.");
         }
@@ -75,7 +74,7 @@ export default class Navigation {
         }
     }
 
-    getParents(elem) {
+    getParents(elem : HTMLElement) : Array<HTMLElement> {
         if (elem.tagName == "HTML") {
             return [elem];
         }
@@ -122,5 +121,9 @@ export default class Navigation {
         window.addEventListener("click", (e) => {
             this.handlePageClick(e);
         })
+    }
+
+    handleResize() {
+        return
     }
 }

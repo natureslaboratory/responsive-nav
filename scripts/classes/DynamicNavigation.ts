@@ -1,4 +1,4 @@
-import Navigation from './Navigation.js';
+import Navigation from './Navigation';
 
 export default class DynamicNavigation extends Navigation {
     breakpoint;

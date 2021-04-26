@@ -1,8 +1,9 @@
-import DynamicNavigation from './classes/DynamicNavigation.js';
-import StaticNavigation from './classes/StaticNavigation.js';
-import FixedNavigation from './classes/FixedNavigation.js';
+import DynamicNavigation from './classes/DynamicNavigation';
+import StaticNavigation from './classes/StaticNavigation';
+import FixedNavigation from './classes/FixedNavigation';
+import Navigation from './classes/Navigation';
 
-const navigationBuilder = nav => {
+const navigationBuilder = (nav : HTMLElement) => {
     switch (nav.dataset.type) {
         case "dynamic":
             return new DynamicNavigation(nav);
@@ -15,13 +16,15 @@ const navigationBuilder = nav => {
     }
 }
 
-let navigationItems = document.getElementsByClassName("c-navigation");
-let navigationArray = [];
+let navigationItems = document.getElementsByClassName("c-navigation") as HTMLCollectionOf<HTMLElement>;
+let navigationArray : Array<Navigation> = [];
+
 for (let i = 0; i < navigationItems.length; i++) {
     const nav = navigationItems[i];
     let navigation = navigationBuilder(nav);
     navigationArray = [...navigationArray, navigation];
 }
+
 if (navigationArray) {
     window.addEventListener("DOMContentLoaded", () => {
         navigationArray.forEach(nav => {

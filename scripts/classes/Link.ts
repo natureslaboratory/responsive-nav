@@ -1,41 +1,51 @@
-import Icon from './Icon.js';
+import Icon from './Icon';
 
-class Link {
-    node; // HTMLElement
-    link; // HTMLElement
-    icon; // Icon
-    childLinksNode; // HTMLElement
-    childLinks = []; // Array<HTMLElement>
+export class Link {
+    node : HTMLElement;
+    link : HTMLElement;
+    icon : Icon;
+    childLinksNode : HTMLElement;
+    childLinks : Array<HTMLElement> = [];
 
-    get hasChildren() {
+    get hasChildren() : boolean {
         if (this.childLinksNode) {
             return true;
         }
         return false;
     }
 
-    get isHidden() {
+    get isHidden() : boolean {
         if (this.node.classList.contains("hide")) {
             return true;
         }
         return false;
     }
 
-    constructor(link) {
+    constructor(link : HTMLElement) {
         this.node = link;
     }
 
-    // Public Null
-    hide() {
+    hideLink() : void {
         if (!this.isHidden) {
             this.node.classList.add("hide");
         }
     }
 
-    // Public Null
-    show() {
+    showLink() : void {
         if (this.isHidden) {
             this.node.classList.remove("hide");
+        }
+    }
+
+    makeTabbable() {
+        if (this.link) {
+            this.link.tabIndex = 0;
+        }
+    }
+
+    makeUntabbable() {
+        if (this.link) {
+            this.link.tabIndex = -1;
         }
     }
 
@@ -44,23 +54,23 @@ class Link {
 export class NavBarLink extends Link {
 
     // Public Int
-    get width() {
+    get width() : number {
         const linkRect = this.node.getBoundingClientRect();
         return linkRect.right - linkRect.left;
     }
 
-    get isMenuOpen() {
+    get isMenuOpen() : boolean {
         if (this.childLinksNode.classList.contains("show")) {
             return true;
         }
         return false;
     }
 
-    constructor(link) {
+    constructor(link : HTMLElement) {
         super(link);
-        for (let i = 0; i < this.node.children.length; i++) {
-            const child = this.node.children[i];
-            // child is HTMLElement
+        let children = this.node.children as HTMLCollectionOf<HTMLElement>;
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
 
             if (child.classList.contains("c-navbar__link") || child.classList.contains("c-navbar__button")) {
                 this.link = child;
@@ -76,22 +86,23 @@ export class NavBarLink extends Link {
         }
 
         if (this.hasChildren) {
-            for (let i = 0; i < this.childLinksNode.children.length; i++) {
-                const link = this.childLinksNode.children[i];
+            let links = this.childLinksNode.children as HTMLCollectionOf<HTMLElement>;
+            for (let i = 0; i < links.length; i++) {
+                const link = links[i];
                 this.childLinks = [...this.childLinks, link];
             }
         }
     }
 
-    toggle() {
+    toggle() : void {
         if (this.isMenuOpen) {
-            this.close();
+            this.closeMenu();
         } else {
-            this.open();
+            this.openMenu();
         }
     }
 
-    open() {
+    openMenu() : void {
         if (this.childLinksNode) {
             this.childLinksNode.classList.add("show");
             let buttonRect = this.node.getBoundingClientRect();
@@ -100,7 +111,7 @@ export class NavBarLink extends Link {
         }
     }
 
-    close() {
+    closeMenu() : void {
         if (this.childLinksNode) {
             this.childLinksNode.classList.remove("show");
             this.icon.unspin();
@@ -111,6 +122,8 @@ export class NavBarLink extends Link {
 
 export class HamburgerNavLink extends Link {
 
+    expandType : string;
+
     get isMenuOpen() {
         if (this.childLinksNode.style.maxHeight) {
             return true;
@@ -118,10 +131,14 @@ export class HamburgerNavLink extends Link {
         return false;
     }
 
-    constructor(link) {
+    constructor(link : HTMLElement, expandType : string) {
         super(link);
-        for (let i = 0; i < this.node.children.length; i++) {
-            const child = this.node.children[i];
+        this.expandType = expandType;
+
+        let children = this.node.children as HTMLCollectionOf<HTMLElement>;
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+
             if (child.classList.contains("c-hamburger__link") || child.classList.contains("c-hamburger__element-button")) {
                 this.link = child;
                 let icons = child.getElementsByClassName("c-icon");
@@ -134,11 +151,14 @@ export class HamburgerNavLink extends Link {
         }
 
         if (this.hasChildren) {
-            for (let i = 0; i < this.childLinksNode.children.length; i++) {
-                const element = this.childLinksNode.children[i];
-                let links = element.getElementsByClassName("c-hamburger__sub-link");
+            let linksArray = this.childLinksNode.children as HTMLCollectionOf<HTMLElement>;
+            for (let i = 0; i < linksArray.length; i++) {
+                const element = linksArray[i];
+
+
+                let links = element.getElementsByClassName("c-hamburger__sub-link") as HTMLCollectionOf<HTMLElement>;
                 if (links) {
-                    links[0].tabIndex = "-1";
+                    links[0].tabIndex = -1;
                 }
                 this.childLinks = [...this.childLinks, element];
             }
@@ -147,10 +167,8 @@ export class HamburgerNavLink extends Link {
 
     toggle() {
         if (this.isMenuOpen) {
-            // this.mobileIcon.node.classList.remove("spin");
             this.close();
         } else {
-            // this.mobileIcon.node.classList.add("spin");
             this.open();
         }
     }
@@ -159,9 +177,9 @@ export class HamburgerNavLink extends Link {
         if (this.childLinksNode) {
             this.childLinksNode.style.maxHeight = null;
             this.childLinks.forEach(element => {
-                let links = element.getElementsByClassName("c-hamburger__sub-link");
+                let links = element.getElementsByClassName("c-hamburger__sub-link") as HTMLCollectionOf<HTMLElement>;
                 if (links) {
-                    links[0].tabIndex = "-1";
+                    links[0].tabIndex = -1;
                 }
             })
             if (this.icon) {
@@ -174,26 +192,14 @@ export class HamburgerNavLink extends Link {
         if (this.childLinksNode) {
             this.childLinksNode.style.maxHeight = this.childLinksNode.scrollHeight + "px";
             this.childLinks.forEach(element => {
-                let links = element.getElementsByClassName("c-hamburger__sub-link");
+                let links = element.getElementsByClassName("c-hamburger__sub-link") as HTMLCollectionOf<HTMLElement>;
                 if (links) {
-                    links[0].tabIndex = "0";
+                    links[0].tabIndex = 0;
                 }
             })
             if (this.icon) {
                 this.icon.spin();
             }
-        }
-    }
-
-    makeTabbable() {
-        if (this.link) {
-            this.link.tabIndex = "0";
-        }
-    }
-
-    makeUntabbable() {
-        if (this.link) {
-            this.link.tabIndex = "-1";
         }
     }
 }

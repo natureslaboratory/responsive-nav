@@ -16,14 +16,18 @@
     "url": "https://github.com/natureslaboratory/responsive-nav/issues"
   },
   "homepage": "https://github.com/natureslaboratory/responsive-nav#readme",
-  "dependencies": {},
+  "dependencies": {
+    "typescript": "^4.2.4"
+  },
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.10",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.1",
+    "source-map-loader": "^2.0.1",
     "style-loader": "^2.0.0",
+    "ts-loader": "^9.1.1",
     "webpack": "^5.26.1",
     "webpack-cli": "^4.5.0"
   },

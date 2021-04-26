@@ -1,18 +1,20 @@
-import NavMenu from './NavMenu.js';
-import {HamburgerNavLink} from './Link.js';
+import NavMenu from './NavMenu';
+import {HamburgerNavLink} from './Link';
 
 export default class Hamburger extends NavMenu {
-    type;
+    type : string;
+    subMenuType : string;
+    links : Array<HamburgerNavLink> = [];
 
     // Public Bool
-    get isHidden() {
+    get isHidden() : Boolean {
         if (this.node.classList.contains("show")) {
             return false;
         }
         return true;
     }
 
-    get isHamburgerFull() {
+    get isHamburgerFull() : Boolean {
         this.links.forEach(link => {
             if (link.isHidden) {
                 return false;
@@ -21,14 +23,18 @@ export default class Hamburger extends NavMenu {
         return true;
     }
 
-    constructor(menu) {
+    constructor(menu : HTMLElement) {
         super(menu);
         this.subMenuType = this.node.dataset.expand;
         if (!this.subMenuType) {
             console.warn("No Expand Type Specified");
         }
-        for (let i = 0; i < this.node.children.length; i++) {
-            const link = this.node.children[i];
+
+        let children = this.node.children as HTMLCollectionOf<HTMLElement>;
+
+        for (let i = 0; i < children.length; i++) {
+            const link = children[i];
+
             if (link.classList.contains("c-hamburger__element")) {
                 let newLink = new HamburgerNavLink(link, this.subMenuType ? this.subMenuType : "accordian");
                 newLink.makeUntabbable();
@@ -119,7 +125,7 @@ export default class Hamburger extends NavMenu {
         for (let i = this.links.length - 1; i >= 0; i--) {
             const link = this.links[i];
             if (link.isHidden) {
-                link.show()
+                link.showLink()
                 break;
             }
         }

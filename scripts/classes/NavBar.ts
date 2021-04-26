@@ -1,7 +1,8 @@
-import NavMenu from './NavMenu.js';
-import {NavBarLink} from './Link.js';
+import NavMenu from './NavMenu';
+import {NavBarLink} from './Link';
 
 export default class NavBar extends NavMenu {
+    links : Array<NavBarLink> = [];
 
     // Public Int
     get totalWidth() {
@@ -12,11 +13,12 @@ export default class NavBar extends NavMenu {
         return width;
     }
 
-    constructor(menu, labelMappings = {}) {
-        super(menu, labelMappings)
-        for (let i = 0; i < this.node.children.length; i++) {
-            const link = this.node.children[i];
-            let newLink = new NavBarLink(link, this.labelMappings, this.closeAllMenus);
+    constructor(menu : HTMLElement) {
+        super(menu)
+        let children = this.node.children as HTMLCollectionOf<HTMLElement>;
+        for (let i = 0; i < children.length; i++) {
+            const link = children[i];
+            let newLink = new NavBarLink(link);
             this.links = [...this.links, newLink];
         }
 
@@ -31,18 +33,18 @@ export default class NavBar extends NavMenu {
         for (let i = this.links.length - 1; i >= 0; i--) {
             const link = this.links[i];
             if (!link.isHidden) {
-                link.hide()
+                link.hideLink()
                 break;
             }
         }
     }
 
-    handleLinks(link) {
+    handleLinks(link : NavBarLink) {
         if (link.childLinksNode.classList.contains("show")) {
-            link.close();
+            link.closeMenu();
         } else {
             this.closeAllMenus();
-            link.open();
+            link.openMenu();
         }
     }
     
@@ -58,7 +60,7 @@ export default class NavBar extends NavMenu {
 
     closeAllMenus() {
         this.links.forEach(link => {
-            link.close();
+            link.closeMenu();
         })
     }
 }
