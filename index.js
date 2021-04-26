@@ -220,6 +220,14 @@ var Hamburger = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(Hamburger.prototype, "allLinks", {
+        get: function () {
+            var allLinks = this.node.getElementsByTagName("a");
+            return Array.from(allLinks);
+        },
+        enumerable: false,
+        configurable: true
+    });
     // Public Null
     Hamburger.prototype.show = function () {
         this.links.forEach(function (link) {
@@ -296,6 +304,11 @@ var Hamburger = /** @class */ (function (_super) {
     };
     Hamburger.prototype.addEventListeners = function () {
         var _this = this;
+        this.allLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                _this.hide();
+            });
+        });
         this.links.forEach(function (link) {
             if (link.hasChildren) {
                 link.node.addEventListener("click", function () {

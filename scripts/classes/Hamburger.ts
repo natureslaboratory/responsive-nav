@@ -1,20 +1,20 @@
 import NavMenu from './NavMenu';
-import {HamburgerNavLink} from './Link';
+import { HamburgerNavLink } from './Link';
 
 export default class Hamburger extends NavMenu {
-    type : string;
-    subMenuType : string;
-    links : Array<HamburgerNavLink> = [];
+    type: string;
+    subMenuType: string;
+    links: Array<HamburgerNavLink> = [];
 
     // Public Bool
-    get isHidden() : Boolean {
+    get isHidden(): Boolean {
         if (this.node.classList.contains("show")) {
             return false;
         }
         return true;
     }
 
-    get isHamburgerFull() : Boolean {
+    get isHamburgerFull(): Boolean {
         this.links.forEach(link => {
             if (link.isHidden) {
                 return false;
@@ -23,7 +23,12 @@ export default class Hamburger extends NavMenu {
         return true;
     }
 
-    constructor(menu : HTMLElement) {
+    get allLinks(): Array<HTMLElement> {
+        let allLinks = this.node.getElementsByTagName("a") as HTMLCollectionOf<HTMLElement>;
+        return Array.from(allLinks);
+    }
+
+    constructor(menu: HTMLElement) {
         super(menu);
         this.subMenuType = this.node.dataset.expand;
         if (!this.subMenuType) {
@@ -59,7 +64,7 @@ export default class Hamburger extends NavMenu {
                         <rect transform="rotate(-135)" y="-186.35922" x="-215.2514" height="1.0394346" width="16.394718" class="c-cross__rect" />
                     </g>
                 </svg>`
-            
+
             this.node.prepend(closeDiv);
         }
 
@@ -117,7 +122,7 @@ export default class Hamburger extends NavMenu {
         setTimeout(() => {
             this.closeAllMenus();
         }, 150);
-            
+
     }
 
     // Public Null
@@ -145,8 +150,16 @@ export default class Hamburger extends NavMenu {
             link.close();
         })
     }
-    
+
+
+
     addEventListeners() {
+        this.allLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                this.hide();
+            })
+        })
+
         this.links.forEach(link => {
             if (link.hasChildren) {
                 link.node.addEventListener("click", () => {
