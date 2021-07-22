@@ -28,15 +28,26 @@ export default class DynamicNavigation extends Navigation {
         // for desktop
         this.moveAllToNav();
         let timeout = 0;
+        this.clearMaxWidth();
         while (this.isNavWrapped() && timeout < 1000) {
             this.moveOneToHamburger();
+            // this.setMaxWidth();
             timeout++
         }
+        this.setMaxWidth();
 
         if (timeout > 900) {
             throw new Error("Infinite Loop");
         }
         this.show();
+    }
+
+    setMaxWidth() {
+        this.navBar.node.style.maxWidth = `${this.navBar.totalWidth+5}px`;
+    }
+
+    clearMaxWidth() {
+        this.navBar.node.style.maxWidth = null;
     }
 
     // Private Bool
@@ -46,7 +57,7 @@ export default class DynamicNavigation extends Navigation {
         let linksWidth = this.navBar.totalWidth;
 
         // 50 is icon width, refactor later to use actual icon width
-        if (linksWidth > navWidth - 50) {
+        if (linksWidth > navWidth) {
             return true;
         }
         return false;

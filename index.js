@@ -52,14 +52,23 @@ var DynamicNavigation = /** @class */ (function (_super) {
         // for desktop
         this.moveAllToNav();
         var timeout = 0;
+        this.clearMaxWidth();
         while (this.isNavWrapped() && timeout < 1000) {
             this.moveOneToHamburger();
+            // this.setMaxWidth();
             timeout++;
         }
+        this.setMaxWidth();
         if (timeout > 900) {
             throw new Error("Infinite Loop");
         }
         this.show();
+    };
+    DynamicNavigation.prototype.setMaxWidth = function () {
+        this.navBar.node.style.maxWidth = this.navBar.totalWidth + 5 + "px";
+    };
+    DynamicNavigation.prototype.clearMaxWidth = function () {
+        this.navBar.node.style.maxWidth = null;
     };
     // Private Bool
     DynamicNavigation.prototype.isNavWrapped = function () {
@@ -67,7 +76,7 @@ var DynamicNavigation = /** @class */ (function (_super) {
         var navWidth = navigationRect.right - navigationRect.left;
         var linksWidth = this.navBar.totalWidth;
         // 50 is icon width, refactor later to use actual icon width
-        if (linksWidth > navWidth - 50) {
+        if (linksWidth > navWidth) {
             return true;
         }
         return false;
