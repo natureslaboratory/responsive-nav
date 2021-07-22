@@ -106,7 +106,7 @@ export class NavBarLink extends Link {
         if (this.childLinksNode) {
             this.childLinksNode.classList.add("show");
             let buttonRect = this.node.getBoundingClientRect();
-            this.childLinksNode.style.top = `${buttonRect.bottom}px`;
+            this.childLinksNode.style.top = `${buttonRect.bottom - buttonRect.top}px`;
             this.icon.spin();
         }
     }
